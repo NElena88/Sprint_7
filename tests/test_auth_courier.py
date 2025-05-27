@@ -28,13 +28,14 @@ class TestAuthCourier:
 
     @allure.title('Проверка авторизации курьера без заполнения одного из обязательных полей')
     def test_auth_missing_password_show_error(self):
-        with allure.step('Проверка вывода ошибки при авторизации без пароля'):
+        with allure.step('Проверка вывода статус-кода 400 при авторизации без пароля'):
             credentials = CreateCourierMethods.register_and_return_credentials()
             payload = {"login": credentials["login"]}
             response = CreateCourierMethods.login_courier(payload)
+            assert response.status_code == 400
 
-        assert response.status_code == 400
-        assert response.json()["message"] == "Недостаточно данных для входа"
+        with allure.step('Проверка вывода ошибки при авторизации без пароля'):
+            assert response.json()["message"] == "Недостаточно данных для входа"
 
     @allure.title('Проверка вывода ошибки при авторизации с неправильными логином или паролем')
     def test_courier_login_wrong_credentials(self):
