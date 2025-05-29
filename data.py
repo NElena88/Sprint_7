@@ -5,6 +5,12 @@ class Url:
     LIST_OF_ORDERS_URL = '/api/v1/orders'
     CREATE_ORDER_URL = '/api/v1/orders'
 
+class MessageText:
+    MISSING_CREDENTIALS_MSG = "Недостаточно данных для входа"
+    ACCOUNT_NOT_FOUND_MSG = "Учетная запись не найдена"
+    LOGIN_ALREADY_USED_MSG = "Этот логин уже используется."
+    MISSING_DATA_FOR_ACCOUNT_CREATION_MSG = "Недостаточно данных для создания учетной записи"
+
 class DataForCreateCourier:
     CREATE_LOGIN_BODY = {
         "login": "ninja",

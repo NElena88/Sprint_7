@@ -16,14 +16,6 @@ class CreateCourierMethods:
         return response
 
     @staticmethod
-    def register_and_return_credentials():
-        body = generate_create_courier_body()
-        response = CreateCourierMethods.create_courier(body)
-        if response.status_code == 201:
-            return {"login": body["login"], "password": body["password"]}
-        return None
-
-    @staticmethod
     def get_id_by_auth(login, password):
         params = {'login':login, 'password':password}
         response = requests.get(f'{Url.BASE_URL}{Url.CREATE_COURIER_URL}', json=params)
